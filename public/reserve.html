@@ -1,24 +1,23 @@
-<!-- =============================
+<!-- ==================================
      public/reserve.html
-     ============================= -->
+     ================================== -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="description" content="Reserve Space at GSC Logistics" />
+  <meta name="description" content="Reserve Warehouse Space at GSC 360" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GSC Logistics | Reserve</title>
+  <title>GSC 360 | Reserve</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <!-- HEADER -->
   <header class="main-header">
     <div class="logo">
       <img
         src="https://images.pexels.com/photos/4481328/pexels-photo-4481328.jpeg?auto=compress&cs=tinysrgb&w=80&h=80"
-        alt="GSC Logo"
+        alt="GSC 360 Logo"
       />
-      <h1>GSC Logistics</h1>
+      <h1>GSC 360</h1>
     </div>
     <nav>
       <ul>
@@ -31,20 +30,21 @@
     </nav>
   </header>
 
-  <!-- PAGE BANNER -->
   <section class="page-banner" style="
     background-image: url('https://images.pexels.com/photos/7164149/pexels-photo-7164149.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
   ">
-    <h2>Reserve Your Space</h2>
-    <p>Start at just 250 sq ft for $100/month. Scale whenever you’re ready!</p>
+    <h2>Reserve Your 360° Space</h2>
+    <p>
+      Out of our total 1 million sq ft, <strong>158,750 sq ft</strong> is currently free.
+      Start at just 250 sq ft for $100/month—expand as needed.
+    </p>
   </section>
 
-  <!-- RESERVATION FORM -->
   <section class="content-section">
-    <h3>Online Warehouse Reservation</h3>
+    <h3>Quick Online Reservation</h3>
     <p>
-      Fill out the form below to reserve your spot. We’ll guide you through our simple contract process and set
-      up your monthly subscription in no time.
+      Fill out the form below to reserve your spot. We’ll guide you through our simple digital 
+      contract and monthly subscription process.
     </p>
     <form id="contractForm" class="reserve-form">
       <label for="customerName">Full Name</label>
@@ -56,21 +56,21 @@
       <label for="email">Email</label>
       <input type="email" id="email" name="email" required />
 
-      <label for="spaceRequested">Space Requested (sq ft)</label>
+      <label for="spaceRequested">Space Needed (sq ft)</label>
       <input
         type="number"
         id="spaceRequested"
         name="spaceRequested"
         min="250"
-        step="50"
         value="250"
+        step="50"
         required
       />
 
       <div class="terms-checkbox">
         <input type="checkbox" id="agreeTerms" name="agreeTerms" required />
         <label for="agreeTerms">
-          I agree to the <a href="#" target="_blank">Warehousing Services Agreement</a>.
+          I agree to the <a href="#" target="_blank">Warehouse Services Agreement</a>.
         </label>
       </div>
 
@@ -79,9 +79,8 @@
     <div id="statusMessage"></div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="main-footer">
-    <p>© 2025 GSC Logistics - All Rights Reserved</p>
+    <p>© 2025 GSC 360 Logistics. All rights reserved.</p>
   </footer>
 
   <script src="js/main.js"></script>

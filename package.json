@@ -1,7 +1,7 @@
 {
-  "name": "gsc-website",
+  "name": "gsc-360-website",
   "version": "1.0.0",
-  "description": "A creative logistics website for GSC with Node.js, Express, Stripe subscription, and e-sign placeholder.",
+  "description": "GSC 360 Logistics: End-to-end warehousing & logistics site, inspired by major 3PLs.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -14,3 +14,4 @@
     "stripe": "^11.15.0"
   }
 }
+
