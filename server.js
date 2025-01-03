@@ -4,6 +4,7 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
+const nodemailer = require("nodemailer");
 
 // OPTIONAL: If you plan to integrate Stripe for subscriptions/payment
 // Replace with your actual secret key if you want real billing
@@ -63,16 +64,61 @@ app.post("/create-subscription", async (req, res) => {
   } catch (error) {
     console.error("Create-subscription error:", error);
     return res.status(500).json({ error: error.message });
+
+  }
+
+});
+
+
+// 1) Create transporter for localhost Postfix
+const transporter = nodemailer.createTransport({
+  host: "localhost",
+  port: 25,
+  secure: false, // no TLS if using port 25
+    tls: {
+        rejectUnauthorized: false,
+    },
+  // If your Postfix doesn't require auth for local connections, omit user/pass
+  // If it does, specify:
+  // auth: {
+  //   user: "yourLocalUsername",
+  //   pass: "yourLocalPassword"
+  // }
+});
+
+// 2) A route to handle contact form submissions
+app.post("/send-email", async (req, res) => {
+  try {
+    const { name, email, message } = req.body;
+
+    let mailOptions = {
+      from: `"Contact Form" <noreply@gscwarehousing.com>`,
+      to: "carson.smith@gscwarehousing.com",
+      subject: "New Contact Form Submission",
+      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+
+    };
+
+    // Send mail via local Postfix
+    await transporter.sendMail(mailOptions);
+
+    return res.status(200).json({ message: "Email sent successfully!" });
+  } catch (error) {
+    console.error("Error in /send-email:", error);
+    return res.status(500).json({ error: "Failed to send email." });
+
   }
 });
 
 // Catch-all 404
 app.use((req, res) => {
   res.status(404).send("Page Not Found");
-});
+})
+;
 
 // Start server
 const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
   console.log(`GSC 360 website running on port ${PORT}`);
 });

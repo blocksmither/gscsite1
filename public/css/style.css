@@ -64,7 +64,7 @@ body {
 /* HERO SECTION */
 .hero {
   position: relative;
-  height: 60vh;
+  height: 40vh;
   background-size: cover;
   background-position: center;
   display: flex;
