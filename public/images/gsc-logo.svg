@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="300" height="300"
+     viewBox="0 0 300 300">
+
+  <!-- Orange top face -->
+  <polygon fill="#f57c00"
+           points="100,40 200,40 250,70 150,70" />
+
+  <!-- Navy left face -->
+  <polygon fill="#1b2a49"
+           points="100,40 150,70 150,170 100,140" />
+
+  <!-- Gray right face -->
+  <polygon fill="#7e7e7e"
+           points="200,40 250,70 250,170 200,140" />
+
+  <!-- 'G' on the navy face -->
+  <text x="117" y="115"
+        font-family="Arial, sans-serif"
+        font-weight="bold"
+        font-size="48"
+        fill="#ffffff"
+        transform="rotate(5,120,110)">
+    G
+  </text>
+
+  <!-- 'C' on the gray face -->
+  <text x="213" y="115"
+        font-family="Arial, sans-serif"
+        font-weight="bold"
+        font-size="48"
+        fill="#ffffff"
+        transform="rotate(-5,210,110)">
+    C
+  </text>
+
+</svg>
+
