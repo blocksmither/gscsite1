@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 // Serve static files from /public
 app.use(express.static(path.join(__dirname, "public")));
 
+
 // Home route
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
@@ -89,24 +90,29 @@ const transporter = nodemailer.createTransport({
 // 2) A route to handle contact form submissions
 app.post("/send-email", async (req, res) => {
   try {
-    const { name, email, message } = req.body;
+    const { name, email, message, company, space } = req.body;
 
-    let mailOptions = {
-      from: `"Contact Form" <noreply@gscwarehousing.com>`,
+    // Construct a dynamic email body
+    let emailBody = `Name: ${name}\nEmail: ${email}\n`;
+
+    if (company) emailBody += `Company: ${company}\n`;
+    if (space) emailBody += `Space Requested: ${space} sq ft\n`;
+    if (message) emailBody += `Message: ${message}`;
+
+    const mailOptions = {
+      from: `"GSC 360 Logistics" <noreply@gscwarehousing.com>`,
       to: "carson.smith@gscwarehousing.com",
-      subject: "New Contact Form Submission",
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-
+      subject: "New Form Submission",
+      text: emailBody,
     };
 
-    // Send mail via local Postfix
+    // Send mail
     await transporter.sendMail(mailOptions);
 
     return res.status(200).json({ message: "Email sent successfully!" });
   } catch (error) {
     console.error("Error in /send-email:", error);
     return res.status(500).json({ error: "Failed to send email." });
-
   }
 });
 
